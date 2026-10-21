@@ -59,14 +59,14 @@ export default function DeckBrowser() {
               {decks.map((decks, idx) => (
                 <div
                   key={decks.id}
-                  className="group relative overflow-hidden rounded-lg border border-gray-200"
+                  className="relative rounded-lg border border-gray-200"
                 >
                   <Image
                     src={"https://picsum.photos/400/300"}
                     alt=""
                     width={400}
                     height={300}
-                    className="h-40 w-full object-cover transition-transform duration-200 group-hover:scale-105"
+                    className="w-full object-cover"
                   />
                   <div className="p-4">
                     <h3 className="font-semibold">{decks.name}</h3>

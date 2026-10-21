@@ -16,7 +16,7 @@ export default function DeckBrowser() {
 
     if (search.trim()) {
       data = data.filter((d) =>
-        d.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
+        d.name.toLowerCase().includes(search.toLowerCase()),
       );
     }
     setDecks(data);
@@ -27,8 +27,9 @@ export default function DeckBrowser() {
       <div className="flex flex-col gap-8 md:flex-row">
         {/* <p>Komponenta DeckBrowser je ovde</p> */}
 
+        {/* Sidebar */}
         <aside className="w-full md:w-64 shrink-0">
-          <div className="flex flex-col gap-4 md:sticky md:top-20">
+          <div className="flex flex-col gap-4">
             {/* Search polje */}
             <input
               placeholder="Pretraga stranice..."
@@ -40,9 +41,8 @@ export default function DeckBrowser() {
             {/* Dugme koje vodi na create deck stranicu */}
             <Link
               href="/deck-create"
-              className="inline-flex items-center justify-center rounded bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
+              className="inline-flex rounded bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
             >
-              {" "}
               + Napravi špil
             </Link>
           </div>
@@ -56,9 +56,9 @@ export default function DeckBrowser() {
             </p>
           ) : (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {decks.map((decks, idx) => (
+              {decks.map((deck, idx) => (
                 <div
-                  key={decks.id}
+                  key={deck.id}
                   className="relative rounded-lg border border-gray-200"
                 >
                   <Image
@@ -69,13 +69,11 @@ export default function DeckBrowser() {
                     className="w-full object-cover"
                   />
                   <div className="p-4">
-                    <h3 className="font-semibold">{decks.name}</h3>
-                    <p className="text-sm text-gray-500">
-                      {decks.subject.name}
-                    </p>
+                    <h3 className="font-semibold">{deck.name}</h3>
+                    <p className="text-sm text-gray-500">{deck.subject.name}</p>
                   </div>
                   <Link
-                    href={`/decks/${decks.id}`}
+                    href={`/decks/${deck.id}`}
                     className="absolute inset-0"
                   ></Link>
                 </div>
